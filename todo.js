@@ -8,10 +8,10 @@ function addTask() {
         return;
     }
 
-    var taskList = document.getElementById('taskDisplay');
-    var taskItem = document.createElement('li');
-
-    var checkbox = document.createElement('input');
+    var taskList = document.getElementById('taskDisplay'); //creates a new variable tasklist and the tasks displayed from class="taskDisplay" is encapsulated here
+    var taskItem = document.createElement('li'); // creates a list of tasks and eachItem is created seperately
+    
+    var checkbox = document.createElement('input'); // new variable checkbox is created and the checkbox is taken as input to show if the task is completed or not
     checkbox.type = 'checkbox';
     checkbox.addEventListener('change', function() {
         if (this.checked) {
@@ -21,8 +21,8 @@ function addTask() {
         }
     });
 
-    var label = document.createElement('label');
-    label.appendChild(checkbox);
+    var label = document.createElement('label'); //creates a new task item with a checkbox and a label containing the task name
+    label.appendChild(checkbox);                 //The task item is then added to the task list then it clears the input field, ready for the next task to be entered.
     label.appendChild(document.createTextNode(taskInput));
 
     taskItem.appendChild(label);
@@ -34,8 +34,8 @@ function addTask() {
 function filterTasks(filter) {
     var taskItems = document.querySelectorAll('#taskDisplay li');
 
-    taskItems.forEach(function(taskItem) {
-        if (filter === 'active' && !taskItem.classList.contains('completed')) {
+    taskItems.forEach(function(taskItem) {   // here we pass a parameter of taskItem and forEach function is used to iterate the items through list of tasks to check
+        if (filter === 'active' && !taskItem.classList.contains('completed')) {     //if task is active or not then it is filted based on these conditions.
             taskItem.style.display = 'block';
         } else if (filter === 'completed' && taskItem.classList.contains('completed')) {
             taskItem.style.display = 'block';
@@ -47,7 +47,7 @@ function filterTasks(filter) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {  // function for taking the input from the input tag upon clivking the "enter key"
     var taskInput = document.getElementById('taskInput');
     var filterRadios = document.querySelectorAll('input[name="filter"]');
 
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    filterRadios.forEach(function(radio) {
-        radio.addEventListener('change', function() {
+    filterRadios.forEach(function(radio) {    // sets up event listeners on the filter radio buttons, when the user selects a different filter option,
+        radio.addEventListener('change', function() { // the event listener retrieves the selected value, triggers the filterTasks function to filter and display the tasks accordingly
             var filter = this.value;
             filterTasks(filter);
         });
