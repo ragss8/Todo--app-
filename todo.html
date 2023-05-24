@@ -10,7 +10,7 @@
 <body>
     <h1>Todo App</h1>
     <input type="text" id="taskInput" placeholder="Enter a Task">
-    <button onclick="addTaskBtn">Add Task</button>
+    <button onclick="addButton">Add Task</button>
 
     <div class="display-box">
         <h2 style="text-align: center;">Task List</h2>
@@ -26,8 +26,8 @@
             <!-- Tasks will be dynamically added here -->
         </ul>
     </div>
-
-    <script src="todo.js">
+    
+    <script>
         function addTask() {
             var taskInput = document.getElementById('taskInput').value;
         
@@ -77,10 +77,9 @@
         
         document.addEventListener('DOMContentLoaded', function() {  // function for taking the input from the input tag upon clivking the "enter key"
             var taskInput = document.getElementById('taskInput');
-            var addTaskBtn = document.getElementById('addTaskBtn');
             var filterRadios = document.querySelectorAll('input[name="filter"]');
-
-            addTaskBtn.addEventListener('click', addTask); // new event listener is added to the button element in the JavaScript code using addEventListener,
+            var addButton = document.getElementById('addButton');
+     // new event listener is added to the button element in the JavaScript code using addEventListener,
             // then event listener is triggered when the button is clicked, and it calls the addTask function.
         
             taskInput.addEventListener('keydown', function(event) {
@@ -96,8 +95,24 @@
                     filterTasks(filter);
                 });
             });
+            // new event listener is added to the button element in the JavaScript code using addEventListener,
+            // then event listener is triggered when the button is clicked, and it calls the addTask function.
+            addButton.addEventListener('click', function() {
+                addTask();
+              });
         });
     </script>
+   
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
