@@ -52,11 +52,24 @@
             var label = document.createElement('label'); //creates a new task item with a checkbox and a label containing the task name
             label.appendChild(checkbox);                 //The task item is then added to the task list then it clears the input field, ready for the next task to be entered.
             label.appendChild(document.createTextNode(taskInput));
+            
+            //block of code that deletes a task using "X" symbol
+            var deleteSymbol = document.createElement('span');
+            deleteSymbol.textContent = 'X';
+            deleteSymbol.className = 'deleteSymbol';
+            deleteSymbol.addEventListener('click', function() {
+                deleteTaskItem(taskItem);
+            });
+            label.appendChild(deleteSymbol);
         
             taskItem.appendChild(label);
             taskList.appendChild(taskItem);
         
             document.getElementById('taskInput').value = '';
+        }
+
+        function deleteTaskItem(taskItem){
+            taskItem.remove();
         }
         
         function filterTasks(filter) {
@@ -102,6 +115,7 @@
               });
         });
     </script>
+    
    
 
 </body>
